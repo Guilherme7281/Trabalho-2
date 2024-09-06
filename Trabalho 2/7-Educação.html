@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alimentação</title>
+</head>
+<body>
+    <body>
+        <div class="container">
+            <h1>Relatório sobre Educação:</h1>
+
+            <form id="reportForm">
+                <label for="date">Data:</label>
+                <input type="text" id="date" placeholder="(AAAA-MM-DD)">
+    
+                <label for="description">Descrição:</label>
+                <input type="text" id="description" placeholder="Digite a descrição">
+    
+                <label for="amount">Valor:</label>
+                <input type="number" id="amount" placeholder="Digite o valor" step="0.01">
+    
+                <input type="button" value="Adicionar Linha" id="addButton">
+            </form>
+    
+            <div class="result">
+                <table id="reportTable">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+        <script>
+            document.getElementById('addButton').addEventListener('click', function() {
+                const date = document.getElementById('date').value;
+                const description = document.getElementById('description').value;
+                const amount = parseFloat(document.getElementById('amount').value);
+    
+                if (!date || !description || isNaN(amount)) {
+                    alert('Por favor, preencha todos os campos corretamente.');
+                    return;
+                }
+    
+                const tableBody = document.querySelector('#reportTable tbody');
+                const newRow = document.createElement('tr');
+    
+                newRow.innerHTML = `
+                    <td>${date}</td>
+                    <td>${description}</td>
+                    <td>${amount.toFixed(2)}</td>
+                `;
+    
+                tableBody.appendChild(newRow);
+    
+            
+                document.getElementById('date').value = '';
+                document.getElementById('description').value = '';
+                document.getElementById('amount').value = '';
+            });
+        </script>
+    <form action="Opições.html" method="post">
+    <button type="submit">voltar</button>
+</form>
+    </body>
+</body>
+</html>
